@@ -1,4 +1,9 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Property {
@@ -8,7 +13,7 @@ export class Property {
   @Column()
   direccion: string;
 
-  @Column()
+  @Column({ unique: true })
   rol: string;
 
   @Column({ type: 'int' })
@@ -16,4 +21,12 @@ export class Property {
 
   @Column({ default: 'disponible' })
   estado: 'disponible' | 'comprometida' | 'vendida';
+
+  // Ubicación
+  @Column({ default: 'Sin comuna', nullable: true }) comuna: string;
+  @Column({ default: 'Sin region', nullable: true }) region: string;
+  @Column('decimal', { precision: 9, scale: 6, nullable: true }) lat: number;
+  @Column('decimal', { precision: 9, scale: 6, nullable: true }) lng: number;
+
+  @CreateDateColumn() createdAt: Date;
 }

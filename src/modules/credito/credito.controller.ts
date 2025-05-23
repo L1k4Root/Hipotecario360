@@ -6,9 +6,8 @@ import { SolicitudCreditoDto } from './dto/solicitud-credito.dto';
 export class CreditoController {
   constructor(private readonly service: CreditoService) {}
 
-  @Post('solicitar')
+  @Post('simulate')
   simulate(@Body() dto: SolicitudCreditoDto) {
-    const { ingresos, deudas, monto, plazo } = dto;
-    return this.service.simulate(ingresos, deudas, monto, plazo);
+    return this.service.simulate(dto);
   }
 }
