@@ -13,8 +13,7 @@ import { Property } from '../propiedades/property.entity';
 export class LoanRequest {
   @PrimaryGeneratedColumn() id: number;
 
-  @JoinColumn()
-  cliente: Client;
+  @JoinColumn() cliente: Client;
   @ManyToOne(() => Property) @JoinColumn() propiedad: Property;
 
   @Column('int') monto: number; // CLP
@@ -22,11 +21,11 @@ export class LoanRequest {
   @Column('int') ingresos: number;
   @Column('int') deudas: number;
 
-  // @Column('float') tasaAnual: number; // %
-  // @Column('int') dividendo: number; // CLP
-  // @Column('float') ratio: number; // %
-  // @Column({ default: 'PENDIENTE' })
-  // estado: 'APROBADO' | 'RECHAZADO' | 'PENDIENTE';
+  @Column('float') tasaAnual: number; // %
+  @Column('int') dividendo: number; // CLP
+  @Column('float') ratio: number; // %
+  @Column({ default: 'PENDIENTE' })
+  estado: 'APROBADO' | 'RECHAZADO' | 'PENDIENTE';
 
   @CreateDateColumn() createdAt: Date;
 }
