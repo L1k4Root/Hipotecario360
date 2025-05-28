@@ -8,6 +8,6 @@ export class CreditoController {
 
   @Post('simulate')
   simulate(@Body() dto: SolicitudCreditoDto) {
-    return this.service.simulate(dto);
+    return this.service.solicitar(dto);
   }
 }

@@ -2,8 +2,10 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { Client } from '../cliente/cliente.entity';
 
 @Entity()
 export class Property {
@@ -21,6 +23,9 @@ export class Property {
 
   @Column({ default: 'disponible' })
   estado: 'disponible' | 'comprometida' | 'vendida';
+
+  @ManyToOne(() => Client, (client) => client.propiedades)
+  client: Client;
 
   // Ubicación
   @Column({ default: 'Sin comuna', nullable: true }) comuna: string;

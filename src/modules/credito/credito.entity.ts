@@ -13,7 +13,7 @@ import { Property } from '../propiedades/property.entity';
 export class LoanRequest {
   @PrimaryGeneratedColumn() id: number;
 
-  @JoinColumn() cliente: Client;
+  @ManyToOne(() => Client) @JoinColumn({ name: 'clientId' }) cliente: Client;
   @ManyToOne(() => Property) @JoinColumn() propiedad: Property;
 
   @Column('int') monto: number; // CLP
